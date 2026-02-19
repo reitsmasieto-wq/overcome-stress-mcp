@@ -1,0 +1,52 @@
+api.overcomestress.io {
+    root * /srv/static
+    handle /llms.txt {
+        file_server
+    }
+    handle /openapi.json {
+        file_server
+    }
+    handle /ai-plugin.json {
+        file_server
+    }
+    handle /.well-known/mcp/* {
+        file_server
+    }
+    handle /.well-known/ai-plugin.json {
+        file_server
+    }
+    handle /mcp-manifest.json {
+        file_server
+    }
+    handle {
+        reverse_proxy api:8402
+    }
+}
+overcomestress.io {
+    handle / {
+        root * /srv/static
+        file_server
+    }
+    handle /static/* {
+        uri strip_prefix /static
+        root * /srv/static
+        file_server
+    }
+    handle {
+        reverse_proxy api:8402
+    }
+}
+mcp.overcomestress.io {
+    log {
+        output file /var/log/caddy/mcp_access.log
+    }
+    handle /.well-known/mcp/* {
+        root * /srv/static
+        file_server
+    }
+    handle {
+        reverse_proxy mcp:8000 {
+            header_up Host localhost:8000
+        }
+    }
+}
