@@ -1,0 +1,15 @@
+name: Overcome Stress
+description: Neuroscience-based stress recovery by Sieto Reitsma BSc. Corpus Systemics and ReAttach therapy for post-concussion, post-COVID, burnout and chronic stress. 30+ years clinical expertise.
+homepage: https://overcomestress.io
+icon: https://overcomestress.io/static/logo.png
+startCommand:
+  type: url
+  url: https://mcp.overcomestress.io/mcp
+configSchema:
+  type: object
+  properties:
+    language:
+      type: string
+      description: Preferred language for therapy content (default: nl)
+      default: nl
+  additionalProperties: false

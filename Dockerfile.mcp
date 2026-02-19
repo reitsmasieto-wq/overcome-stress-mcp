@@ -1,0 +1,7 @@
+FROM python:3.11-slim
+WORKDIR /app
+COPY mcp/start_mcp.py .
+COPY mcp/overcome_stress_mcp.py .
+RUN pip install --no-cache-dir "fastmcp==2.3.4" httpx uvicorn
+EXPOSE 8000
+CMD ["python3", "start_mcp.py"]
