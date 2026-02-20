@@ -7,9 +7,25 @@ startCommand:
   url: https://mcp.overcomestress.io/mcp
 configSchema:
   type: object
+  title: Overcome Stress Configuration
+  description: Configure your Overcome Stress therapy session preferences
   properties:
     language:
       type: string
-      description: Preferred language for therapy content (default: nl)
-      default: nl
+      title: Language
+      description: Preferred language for therapy content
+      default: en
+      enum: [en, nl]
+    focus_area:
+      type: string
+      title: Focus Area
+      description: Primary condition to focus on
+      default: stress
+      enum: [stress, post-concussion, post-covid, burnout]
+    session_mode:
+      type: string
+      title: Session Mode
+      description: Type of interaction preferred
+      default: assessment
+      enum: [assessment, skills, trajectories]
   additionalProperties: false
